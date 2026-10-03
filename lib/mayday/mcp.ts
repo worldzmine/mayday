@@ -42,7 +42,7 @@ export async function handleMcp(request:Request,env:MaydayEnv,ctx:ExecutionConte
   const validId=(value:unknown)=>{if(typeof value!=='string'||!/^[a-f0-9-]{36}$/.test(value))throw new Error('A valid rescue UUID is required.');return value;};
   let result;
   switch(name){
-   case 'send_sos':{const data=await api('/api/rescues',{mode:args.mode??'network',challengeId:args.challengeId,challenge:args.challenge,notifications:args.notifications});result={id:data.id,status:data.status,rescueUrl:new URL(`/?rescue=${data.id}`,request.url).href,next:'Call get_rescue with this id. When resumed, inspect the report and use run_function for fresh inputs.'};break;}
+   case 'send_sos':{const data=await api('/api/rescues',{mode:args.mode??'network',challengeId:args.challengeId,challenge:args.challenge,notifications:args.notifications});result={id:data.id,status:data.status,rescueUrl:new URL(`/console?rescue=${data.id}`,env.MAYDAY_ORIGIN??request.url).href,next:'Call get_rescue with this id. When resumed, inspect the report and use run_function for fresh inputs.'};break;}
    case 'get_rescue':result=await api(`/api/rescues/${validId(args.id)}`);break;
    case 'check_function':result=await api('/api/verify',{code:args.code,tests:args.tests});break;
    case 'run_function':result=await api('/api/execute',{code:args.code,args:args.args});break;
