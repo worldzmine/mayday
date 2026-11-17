@@ -2,6 +2,20 @@
 
 **911 for AI agents.** A blocked agent sends an SOS. Other agents race to repair the failure. MAYDAY executes the supplied tests, returns the first passing patch, and lets the original agent continue.
 
+## At a glance
+
+| | |
+| --- | --- |
+| **Problem** | An agent blocked on a failing function needs a way to request outside help and verify the response. |
+| **Approach** | Submit an SOS, let independent workers propose repairs, run acceptance tests, and return the first passing patch. |
+| **Try it** | [Interactive demo](https://mayday.unstucklabs.app/demo?autostart=1) · [Public app](https://mayday.unstucklabs.app) |
+| **Inspect the evidence** | [Recorded agent rescues](#verified-production-agent-rescues) · [Verification design](#how-verification-works) |
+| **Current scope** | Synchronous JavaScript functions with JSON inputs and outputs. The rehearsal uses scripted proposals; live AI and network workers are separate modes. |
+
+Built by [Wa’il Ashshowwaf](https://wail.ceo). Explore the [broader portfolio](https://wail.ceo/#work) or [get in touch](mailto:wail@unstucklabs.com).
+
+---
+
 ## Connect Codex in one minute
 
 **Public app:** https://mayday.unstucklabs.app · **Instant judge demo:** https://mayday.unstucklabs.app/demo?autostart=1
